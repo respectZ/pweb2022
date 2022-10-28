@@ -63,9 +63,12 @@ try {
     $lastname = "Aegir";
     $email = "johnaegir@example.com";
 
-    $sql = "INSERT INTO $table (firstname, lastname, email) VALUES(?,?,?);"
+    $sql = "INSERT INTO $table (firstname, lastname, email) VALUES(?,?,?);";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sss", $firstname, $lastname, $email);
+    // Kalo ngga bisa
+    $stmt->bindParam(1, $firstname);
+    $stmt->bindParam(2, $lastname);
 
     $res = $stmt->execute();
     if($res) {

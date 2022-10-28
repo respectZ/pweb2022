@@ -43,42 +43,27 @@ if($result) {
 ```
 ## UPDATE
 ```php
-include_once("connection.php");
-try {
-    $firstname = "Skadi";
-    $email = "johnaegir@example.com";
-
-    $sql = "UPDATE actor SET firstname=? WHERE email=?;"
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $firstname, $email);
-
-    $res = $stmt->execute();
-    if($res) {
-        echo "Data berhasil diperbarui";
-    } else {
-        echo "Terdapat kesalahan";
-    }
-} catch(PDOException $e) {
-    echo "Error: " . $e->getMessage();
+$lastname = "Begir";
+$sql = "UPDATE actor SET last_name='$lastname' WHERE actor_id = 203;";
+$result = $conn->query($sql);
+if($result) {
+    echo "OK";
+} else {
+    echo "NOT OK";
 }
 ```
 ## DELETE
 ```php
-include_once("connection.php");
-try {
-    $email = "johnaegir@example.com";
-
-    $sql = "DELETE FROM actor WHERE email=?"
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $email);
-
-    $res = $stmt->execute();
-    if($res) {
-        echo "Data berhasil diperbarui";
-    } else {
-        echo "Terdapat kesalahan";
-    }
-} catch(PDOException $e) {
-    echo "Error: " . $e->getMessage();
+$sql = "DELETE FROM actor WHERE actor_id = 203;";
+$result = $conn->query($sql);
+if($result) {
+    echo "OK";
+} else {
+    echo "NOT OK";
 }
+```
+
+## Mengatasi SQL Injection
+```php
+$firsname = mysqli_real_escape_string($conn, $firstname);
 ```

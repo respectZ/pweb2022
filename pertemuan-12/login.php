@@ -16,7 +16,7 @@ if(isset($_SESSION["username"])) {
         // Cek apakah username dan password sesuai
         if($_POST["username"] == $username && $_POST["password"] == $password) {
             $_SESSION["username"] = $username;
-            echo "<br> anda baru login";
+            echo "<br> anda baru login, bisa buka dashboard.php";
         } else {
             echo "User tidak ditemukan";
         }

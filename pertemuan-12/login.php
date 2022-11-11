@@ -6,7 +6,7 @@ $password = "123";
 
 // Cek sudah login atau belum
 if(isset($_SESSION["username"])) {
-    echo "sudah login";
+    echo "sudah login, gunakan logout.php untuk logout";
 } else {
     echo "belum login";
 
